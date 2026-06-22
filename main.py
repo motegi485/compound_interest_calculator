@@ -1,4 +1,4 @@
-def compound_interest_calc(principal: int, interest_rate: float, years: int) -> list[int]:
+def calculate_compound_interest(principal: int, interest_rate: float, years: int) -> list[int]:
     """
     指定された年数の複利計算を行い、各年の合計金額のリストを返す
     """
@@ -25,6 +25,10 @@ def main():
                 print("エラー：元金と期間（年）は正の値を入力してください")
                 continue
 
+            if interest_rate <= -100:
+                print("エラー：金利は-100％より大きい値を入力してください")
+                continue
+
             break
         
         except ValueError:
@@ -34,7 +38,7 @@ def main():
 
     print(f"\n====={years}年間のシミュレート結果=====")
 
-    yearly_result = compound_interest_calc(principal, interest_rate, years)
+    yearly_result = calculate_compound_interest(principal, interest_rate, years)
     digits = len(str(years))
 
     for i, amount in enumerate(yearly_result, start=1):
